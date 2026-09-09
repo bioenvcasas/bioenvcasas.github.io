@@ -12,13 +12,18 @@
   <nav class="navbar">
     <div class="container">
       <a href="#" class="logo" id="logo-top"><img src="logo_no_text.png" alt="BioEnv Logo" class="logo-img"> BioEnv</a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         <li><a href="#about">Sobre</a></li>
         <li><a href="#materials">Materiais</a></li>
         <li><a href="#accessibility">Acessibilidade</a></li>
         <li><a href="#team">Equipe</a></li>
         <li><a href="#contact">Contato</a></li>
       </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
         <span class="theme-toggle-icon" id="theme-icon">🌙</span>
         <span class="theme-toggle-text">Modo Escuro</span>
@@ -305,11 +310,8 @@
     const themeIcon = document.getElementById('theme-icon');
     const themeText = document.querySelector('.theme-toggle-text');
     
-    document.documentElement.setAttribute('data-theme', 'light');
-    themeIcon.textContent = '🌙';
-    themeText.textContent = 'Modo Escuro';
-    
-    themeToggle.addEventListener('click', () => {
+    // Function to handle theme toggle
+    function toggleTheme() {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       
@@ -324,7 +326,14 @@
       }
       
       localStorage.setItem('theme', newTheme);
-    });
+    }
+    
+    // Add click listener to theme toggle
+    themeToggle.addEventListener('click', toggleTheme);
+    
+    document.documentElement.setAttribute('data-theme', 'light');
+    themeIcon.textContent = '🌙';
+    themeText.textContent = 'Modo Escuro';
     
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
@@ -341,6 +350,23 @@
       themeIcon.textContent = '🌙';
       themeText.textContent = 'Modo Escuro';
     }
+    
+    // Hamburger Menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('mobile-active');
+    });
+    
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('mobile-active');
+      });
+    });
   </script>
 
 </body>
