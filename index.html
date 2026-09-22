@@ -7,6 +7,14 @@
   <meta name="description" content="BioEnv">
   <title>BioEnv</title>
   <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/"
+      }
+    }
+    </script>
 </head>
 <body>
 
@@ -16,6 +24,7 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">Sobre</a></li>
         <li><a href="#materials">Materiais</a></li>
+        <li><a href="#development">Desenvolvimento</a></li>
         <li><a href="#accessibility">Acessibilidade</a></li>
         <li><a href="#team">Equipe</a></li>
         <li><a href="#contact">Contato</a></li>
@@ -73,34 +82,22 @@
       <p class="animate-on-scroll" style="text-align: center; max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem; color: var(--gray);">Cada material é produzido com matéria-prima biodegradável, oferecendo uma alternativa sustentável e acessível.</p>
       <div class="materials-grid">
         <div class="material-card animate-on-scroll">
-          <div class="material-icon">🧱</div>
-          <h3>[Material 1]</h3>
-          <p>[Descrição do material 1]</p>
-          <ul class="specs">
-            <li><span>Preço</span> <strong>[R$ XX]</strong></li>
-            <li><span>Matéria-prima</span> <strong>[Biodegradável]</strong></li>
-            <li><span>Especificações</span> <strong>[A definir]</strong></li>
-          </ul>
+          <div class="material-badge research">Em Pesquisa</div>
+          <div class="material-3d" id="frame-container"></div>
+          <h3>BioEnv Frame</h3>
+          <p>Estrutura principal para paredes e telhados. Substitui vigas de madeira para casas populares e galpões.</p>
         </div>
         <div class="material-card animate-on-scroll">
-          <div class="material-icon">🪟</div>
-          <h3>[Material 2]</h3>
-          <p>[Descrição do material 2]</p>
-          <ul class="specs">
-            <li><span>Preço</span> <strong>[R$ XX]</strong></li>
-            <li><span>Matéria-prima</span> <strong>[Biodegradável]</strong></li>
-            <li><span>Especificações</span> <strong>[A definir]</strong></li>
-          </ul>
+          <div class="material-badge prototyping">Em Prototipagem</div>
+          <div class="material-3d" id="therm-container"></div>
+          <h3>BioEnv Therm</h3>
+          <p>Forro isolante térmico feito de fibra de papelão e amido. Aplicação direta em forros para reduzir perda de calor, ideal para casas em regiões frias.</p>
         </div>
         <div class="material-card animate-on-scroll">
-          <div class="material-icon">🚪</div>
-          <h3>[Material 3]</h3>
-          <p>[Descrição do material 3]</p>
-          <ul class="specs">
-            <li><span>Preço</span> <strong>[R$ XX]</strong></li>
-            <li><span>Matéria-prima</span> <strong>[Biodegradável]</strong></li>
-            <li><span>Especificações</span> <strong>[A definir]</strong></li>
-          </ul>
+          <div class="material-badge research">Em Pesquisa</div>
+          <div class="material-3d" id="base-container"></div>
+          <h3>BioEnv Base</h3>
+          <p>Base versátil, resistente e biodegradável para pisos, ideal para casas pré-fabricadas.</p>
         </div>
       </div>
     </div>
@@ -130,43 +127,42 @@
   <section id="team" class="section section-alt">
     <div class="container">
       <h2 class="animate-on-scroll">Nossa Equipe</h2>
-      <p class="animate-on-scroll" style="text-align: center; max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem; color: var(--gray);">Uma equipe multidisciplinar unida pela missão de tornar a construção sustentável e acessível para todos.</p>
       <div class="team-grid">
         <div class="team-card animate-on-scroll">
           <div class="team-avatar"><img src="images/gabriel.png" alt="Gabriel"></div>
           <h3>Gabriel</h3>
           <p class="role">CEO</p>
-          <p>Líder conduzindo a missão de habitação sustentável e acessível para todos.</p>
+          <p>Líder da equipe da BioEnv. Conduz a equipe com o objetivo de democratizar a habitação ecológica e torná-la acessível para todos.</p>
         </div>
         <div class="team-card animate-on-scroll">
           <div class="team-avatar"><img src="images/nicolas.png" alt="Nicolas"></div>
           <h3>Nicolas</h3>
-          <p class="role">Marketing</p>
-          <p>Responsável por divulgar nossos produtos.</p>
+          <p class="role">Comercial</p>
+          <p>Responsável pela divulgação e parcerias da BioEnv. Gerencia as relações comerciais e garante que nossos produtos cheguem ao público certo.</p>
         </div>
         <div class="team-card animate-on-scroll">
           <div class="team-avatar"><img src="images/thiago.png" alt="Thiago"></div>
           <h3>Thiago</h3>
           <p class="role">Finanças</p>
-          <p>Garante que o material seja de preço acessível</p>
-        </div>
-        <div class="team-card animate-on-scroll">
-            <div class="team-avatar"><img src="images/vinicius.png" alt="Vinícius"></div>
-          <h3>Vinícius</h3>
-          <p class="role">Cientista de materiais</p>
-          <p>Pesquisa materiais biodegradáveis para construção civil.</p>
-        </div>
-        <div class="team-card animate-on-scroll">
-          <div class="team-avatar"><img src="images/matheus.png" alt="Matheus"></div>
-          <h3>Matheus</h3>
-          <p class="role">Designer de Produtos</p>
-          <p>Cria designs funcionais e acessíveis para nossos materiais de construção.</p>
+          <p>Controla o orçamento e garante que os materiais sejam produzidos com custo acessível, mantendo a qualidade sem comprometer o preço final.</p>
         </div>
         <div class="team-card animate-on-scroll">
           <div class="team-avatar"><img src="images/miguel.png" alt="Miguel"></div>
           <h3>Miguel</h3>
-          <p class="role">Especialista em Sustentabilidade</p>
-          <p>Minimiza o impacto ambiental de nossos produtos.</p>
+          <p class="role">CTO</p>
+          <p>Líder técnico, responsável pela pesquisa e desenvolvimento dos materiais biodegradáveis. Garante a qualidade e inovação dos produtos.</p>
+        </div>
+        <div class="team-card animate-on-scroll">
+          <div class="team-avatar"><img src="images/matheus.png" alt="Matheus"></div>
+          <h3>Matheus</h3>
+          <p class="role">Pesquisador</p>
+          <p>Realiza pesquisas sobre materiais biodegradáveis e suas aplicações na construção civil. Analisa custos e viabilidade de produção.</p>
+        </div>
+        <div class="team-card animate-on-scroll">
+            <div class="team-avatar"><img src="images/vinicius.png" alt="Vinícius"></div>
+          <h3>Vinícius</h3>
+          <p class="role">Sustentabilidade</p>
+          <p>Garante que todos os processos da BioEnv sejam ecológicos e contribuam para a redução do impacto ambiental.</p>
         </div>
       </div>
     </div>
@@ -194,7 +190,6 @@
   </footer>
 
   <script>
-    // Navbar scroll effect
     window.addEventListener('scroll', () => {
       const navbar = document.querySelector('.navbar');
       if (window.scrollY > 50) {
@@ -311,7 +306,6 @@
     const themeIcon = document.getElementById('theme-icon');
     const themeText = document.querySelector('.theme-toggle-text');
     
-    // Function to handle theme toggle
     function toggleTheme() {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -329,7 +323,6 @@
       localStorage.setItem('theme', newTheme);
     }
     
-    // Add click listener to theme toggle
     themeToggle.addEventListener('click', toggleTheme);
     
     document.documentElement.setAttribute('data-theme', 'light');
@@ -352,7 +345,6 @@
       themeText.textContent = 'Modo Escuro';
     }
     
-    // Hamburger Menu
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
     
@@ -361,7 +353,6 @@
       navLinks.classList.toggle('mobile-active');
     });
     
-    // Close menu when clicking a link
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -369,6 +360,7 @@
       });
     });
   </script>
+    <script type="module" src="script.js"></script>
 
 </body>
 </html>
